@@ -1,8 +1,6 @@
 public class Main {
     public static void main(String args[]) {
-        Player player = new Player();
-        Player house = new Player();
-
-        
+        Slow slowGame = new Slow();
+        slowGame.PlayGame();
     }
 }

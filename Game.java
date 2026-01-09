@@ -10,7 +10,8 @@ public class Game {
                     break;
                 }
             }
-            if (hasDuplicate) break;
+            if (hasDuplicate)
+                break;
         }
 
         return hasDuplicate;
@@ -26,21 +27,46 @@ public class Game {
                     break;
                 }
             }
-            if (hasDuplicate) break;
+            if (hasDuplicate)
+                break;
         }
 
         return hasDuplicate;
     }
 
     int Round1(Player player, Player house) {
-        if(PlayerHasDuplicate(player) == true && HouseHasDuplicate(house) == false) {
+        if (PlayerHasDuplicate(player) == true && HouseHasDuplicate(house) == false) {
             return 0;
-        }
-        else if(PlayerHasDuplicate(player) == false && HouseHasDuplicate(house) == true) {
+        } else if (PlayerHasDuplicate(player) == false && HouseHasDuplicate(house) == true) {
             return 1;
-        }
-        else {
+        } else {
             return 2;
         }
+    }
+
+    int Round2(Player house, Player player, Deck deck) {
+        deck.AddAces();
+        boolean isWinner = false;
+        while (isWinner == false) {
+            if (deck.DistributeHouse(house) == 1) {
+                isWinner = true;
+                System.out.println("ACE!!");
+                return 1;
+            }
+            if (HouseHasDuplicate(house) == true) {
+                isWinner = true;
+                return 1;
+            }
+            if (deck.DistributePlayer(player) == 1) {
+                isWinner = true;
+                System.out.println("ACE!!");
+                return 1;
+            }
+            if (PlayerHasDuplicate(player) == true) {
+                isWinner = true;
+                return 0;
+            }
+        }
+        return 2;
     }
 }
