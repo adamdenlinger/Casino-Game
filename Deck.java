@@ -37,11 +37,46 @@ public class Deck {
         deck.remove(randInt);
     }
 
-    void SetupRound2() {
-        for(int i = 0; i < 4; i++) {
-            deck.get(1);
+    void AddAces(Player deck) {
+
+    }
+
+    void Round2(Player house, Player player) {
+        for(boolean check = false; check == false;)
+        {
+            int i = 44;
+            int randInt = (int) (Math.random() * i);
+            house.hand.add(deck.get(randInt));
+            deck.remove(randInt);
+            i--;
+            if(CheckDeck(house.hand) == false){
+                randInt = (int) (Math.random() * i);
+                player.hand.add(deck.get(randInt));
+                deck.remove(randInt);
+                i--;
+                if(CheckDeck(player.hand) == true){
+                    check = true;
+                }
+            }
         }
     }
 
-    
+    public boolean CheckDeck(ArrayList<Integer> cards) {
+        boolean desicion = false;
+        for(int i = 0; i < cards.size(); i++) {
+            
+        }
+        return desicion
+    }
+
+    void ResetDeck(Player player, Player house) {
+        for(int i = 0; i < player.hand.size(); i++){
+            deck.add(player.hand.get(0));
+            player.hand.remove(0);
+        }
+        for(int i = 0; i < house.hand.size(); i++){
+            deck.add(house.hand.get(0));
+            house.hand.remove(0);
+        }
+    }
 }
