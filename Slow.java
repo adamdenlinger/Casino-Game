@@ -15,28 +15,59 @@ public class Slow {
     void PlayGame() {
         deck.DistributeRound1(player, house);
 
-                System.out.println(player.hand);
-                System.out.println(house.hand);
+        System.out.println(player.hand);
+        System.out.println(house.hand);
 
         int round1 = game.Round1(player, house);
         if (round1 == 0) {
             playerWins++;
+
+            deck.ResetDeck(player, house);
+
+            System.out.println("Player Wins! Player Hand: " + player.hand);
+            System.out.println("House Loses! House Hand: " + house.hand);
+
+            System.out.println(deck.deck);
+
+            deck.RemoveAces();
+
+            System.out.println(deck.deck);
+
         } else if (round1 == 1) {
             houseWins++;
+
+            deck.ResetDeck(player, house);
+
+            System.out.println("Player Wins! Player Hand: " + player.hand);
+            System.out.println("House Loses! House Hand: " + house.hand);
+
+            System.out.println(deck.deck);
+
+            deck.RemoveAces();
+
+            System.out.println(deck.deck);
+
         } else {
             int round2 = game.Round2(player, house, deck);
-            if(round2 == 0) {
+            if (round2 == 0) {
                 playerWins++;
                 System.out.println("Player Wins! Player Hand: " + player.hand);
                 System.out.println("House Loses! House Hand: " + house.hand);
-            }
-            else {
+            } else {
                 houseWins++;
                 System.out.println("Player Loses! Player Hand: " + player.hand);
                 System.out.println("House Wins! House Hand: " + house.hand);
-
             }
+            deck.ResetDeck(player, house);
+
+            System.out.println(player.hand);
+            System.out.println(house.hand);
+
+            System.out.println(deck.deck);
+
+            deck.RemoveAces();
+
+            System.out.println(deck.deck);
         }
-        deck.ResetDeck(player, house);
     }
 }

@@ -1,6 +1,8 @@
-public class Main {
+class Main {
     public static void main(String args[]) {
-        Slow slowGame = new Slow();
-        slowGame.PlayGame();
+        Fast fastGame = new Fast();
+        fastGame.RunTenKTimes();
+
     }
+
 }
